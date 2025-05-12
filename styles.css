@@ -1,0 +1,74 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .game-container {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  /* ... (conserva todo lo anterior) ... */
+
+.card {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    color: transparent; /* Oculta el emoji */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+  
+  /* Frente de la carta (emoji) */
+  .card::before {
+    content: attr(data-emoji);
+    position: absolute;
+    visibility: hidden; /* Oculta inicialmente */
+  }
+  
+  .card.flipped {
+    background-color: var(--light-color);
+    transform: rotateY(180deg);
+  }
+  
+  .card.flipped::before {
+    visibility: visible; /* Muestra el emoji al voltear */
+    color: var(--primary-color);
+  }
+  
+  .card.matched {
+    background-color: var(--secondary-color);
+    cursor: default;
+  }
+  
+  .card.matched::before {
+    visibility: visible; /* Mantiene visible en cartas coincidentes */
+  }
